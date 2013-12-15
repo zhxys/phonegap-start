@@ -23,7 +23,9 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" href="css/olympicspot.css" type="text/css" />	
+        <link rel="stylesheet" href="css/leaves.css" type="text/css" media="screen">		
+        <title>Olympic spot!</title>
     </head>
     <body>
         <div class="app">
@@ -33,6 +35,200 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
+<div id="mainContent">
+<div id="homePage">
+
+    <div id="play" onClick="goLevelPage('homePage');"></div>
+    <div class="control sound" onClick="muteSound()"></div>
+    <div class="control" id="infobtn"></div>
+    <a href="http://www.facebook.com/pages/Vauvasoft/418589874832916"><div class="control" id="facebook"></div></a>
+    <a href="http://www.twitter.com/vauvasoft"><div class="control" id="twitter"></div></a>
+    <div id="info">
+  	  <div id="howtoplayimg"></div>
+      <div id="contactimg"></div>
+      <div id="languages"><span id="english" class="active">English</span><span id="chinese">中文</span><span id="traditional">繁体中文</span></div>
+
+      <div id="infoList">
+        <ul id="chineseinfo" >
+            <li><strong>玩法介绍：</strong><p>- 在两幅相似图片中找出3-5处不同。<br>- 同一组图片每次玩时不同之处是随机的。<br>- 可以通过声音图标打开或关上音效。</p><br><br></li>
+            <li><strong>联系：</strong><p> 如果有什么希望或发现错误，请发送电子邮件到 vauvasoft@gmail.com。<br>希望你喜欢！</p></li>
+        </ul> 
+        <ul id="englishinfo" class="active">
+            <li><strong>How to play:</strong><p>- Find 3-5 differences between two similar images.<br>- Differences are random in the same pair images every time you play.<br>- Sound effects can be switch on/off by pressing the sound icon.</p><br><br></li>
+            <li><strong>Contact:</strong><p> For any wishes or bug reports, please send an Email to vauvasoft@gmail.com. Enjoy!</p></li>
+        </ul> 
+        <ul id="traditionalinfo">
+<li><strong>玩法介紹：</strong><p>- 在兩幅相似圖片中找出3-5處不同。<br>- 同一組圖片每次玩時不同之處是隨機的。<br>- 可以通過聲音圖標打開或關上音效。</p><br><br></li>
+            <li><strong>聯系：</strong><p> 如果有什麽希望或發現錯誤，請發送電子郵件到 vauvasoft@gmail.com。<br>希望你喜歡！</p></li>
+        </ul> 
+        </div>
+        <div id="backbtn""></div>
+    </div>
+    <div id="leafContainer">
+            <div style="left:331px;top:293px;"><img src="images/balloon1.png"> </div>
+            <div style="left:406px;top:359px;"><img src="images/balloon2.png"> </div>
+            <div style="left:450px;top:292px;"><img src="images/balloon3.png"> </div>
+            <div style="left:488px;top:332px;"><img src="images/balloon4.png"> </div>
+            <div style="left:545px;top:290px;"><img src="images/balloon5.png"> </div>
+            
+    </div>
+</div>
+
+<div id="levelPage">
+	
+    <div class="levelGrid englishGrid">
+      <div class="level archery" level=1><p>Archery</p></div>
+      <div class="level athletics" level=2><p>Athletics</p></div>
+      <div class="level badminton" level=3><p>Badminton</p></div>
+      <div class="level basketball" level=4><p>Basketball</p></div>
+      <div class="level beachvolleyball" level=5><p>Beach Volleyball</p></div>
+      <div class="level r1c6" level=6><p>Boxing</p></div>
+      <div class="level r2c1" level=7><p>Canoeing Slalom</p></div>
+      <div class="level r2c2" level=8><p>Canoeing Sprint</p></div>
+      <div class="level r2c3" level=9><p>Cycling BMX</p></div>
+      <div class="level r2c4" level=10><p>Cycling Mountain Bike</p></div>
+
+      <div class="level r2c5" level=11><p>Cycling Road</p></div>
+      <div class="level r2c6" level=12><p>Cycling Track</p></div>
+      <div class="level r3c1" level=13><p>Diving</p></div>
+      <div class="level r3c2" level=14><p>Equestrian</p></div>
+      <div class="level r3c3" level=15><p>Fencing</p></div>
+      <div class="level r3c4" level=16><p>Football</p></div>
+      <div class="level r3c5" level=17><p>Gymnastics Artistic</p></div>
+      <div class="level r3c6" level=18><p>Gymnastics Rhythmic</p></div>
+      <div class="level r4c1" level=19><p>Handball</p></div>
+      <div class="level r4c2" level=20><p>Hockey</p></div>
+      
+      <div class="level r4c3" level=21><p>Judo</p></div>
+      <div class="level r4c4" level=22><p>Modern Pentathlon</p></div>
+      <div class="level r4c5" level=23><p>Rowing</p></div>
+      <div class="level r4c6" level=24><p>Sailing</p></div>
+      <div class="level r5c1" level=25><p>Shooting</p></div>
+      <div class="level r5c2" level=26><p>Swimming</p></div>
+      <div class="level r5c3" level=27><p>Synchro Swimming</p></div>
+      <div class="level r5c4" level=28><p>Table Tennis</p></div>
+      <div class="level r5c5" level=29><p>Taekwondo</p></div>
+      <div class="level r5c6" level=30><p>Tennis</p></div>
+      
+      <div class="level r6c1" level=31><p>Trampoline</p></div>
+      <div class="level r6c2" level=32><p>Triathlon</p></div>
+      <div class="level r6c3" level=33><p>Volleyball</p></div>
+      <div class="level r6c4" level=34><p>Water Polo</p></div>
+      <div class="level r6c5" level=35><p>Weightlifting</p></div>
+      <div class="level r6c6" level=36><p>Wrestling</p></div>      
+	 </div>
+     
+    <div class="levelGrid chineseGrid">
+      <div class="level archery" level=1><p>射箭</p></div>
+      <div class="level athletics" level=2><p>田径</p></div>
+      <div class="level badminton" level=3><p>羽毛球</p></div>
+      <div class="level basketball" level=4><p>篮球</p></div>
+      <div class="level beachvolleyball" level=5><p>沙滩排球</p></div>
+      <div class="level r1c6" level=6><p>拳击</p></div>
+      <div class="level r2c1" level=7><p>皮划艇激流回旋</p></div>
+      <div class="level r2c2" level=8><p>皮划艇冲刺</p></div>
+      <div class="level r2c3" level=9><p>自行车BMX</p></div>
+      <div class="level r2c4" level=10><p>山地自行车</p></div>            
+      <div class="level r2c5" level=11><p>公路自行车</p></div>
+      <div class="level r2c6" level=12><p>场地自行车</p></div>
+      <div class="level r3c1" level=13><p>跳水</p></div>
+      <div class="level r3c2" level=14><p>马术</p></div>
+      <div class="level r3c3" level=15><p>击剑</p></div>
+      <div class="level r3c4" level=16><p>足球</p></div>
+      <div class="level r3c5" level=17><p>体操</p></div>
+      <div class="level r3c6" level=18><p>艺术体操</p></div>
+      <div class="level r4c1" level=19><p>手球</p></div>
+      <div class="level r4c2" level=20><p>曲棍球</p></div>
+      
+      <div class="level r4c3" level=21><p>柔道</p></div>
+      <div class="level r4c4" level=22><p>现代五项</p></div>
+      <div class="level r4c5" level=23><p>赛艇</p></div>
+      <div class="level r4c6" level=24><p>帆船帆板</p></div>
+      <div class="level r5c1" level=25><p>射击</p></div>
+      <div class="level r5c2" level=26><p>游泳</p></div>
+      <div class="level r5c3" level=27><p>花样游泳</p></div>
+      <div class="level r5c4" level=28><p>乒乓球</p></div>
+      <div class="level r5c5" level=29><p>跆拳道</p></div>
+      <div class="level r5c6" level=30><p>网球</p></div>
+      
+      <div class="level r6c1" level=31><p>蹦床</p></div>
+      <div class="level r6c2" level=32><p>铁人三项</p></div>
+      <div class="level r6c3" level=33><p>排球</p></div>
+      <div class="level r6c4" level=34><p>水球</p></div>
+      <div class="level r6c5" level=35><p>举重</p></div>
+      <div class="level r6c6" level=36><p>摔跤</p></div>      
+	 </div>     
+     
+    <div class="levelGrid traditionalGrid">
+	  <div class="level archery" level=1><p>射箭</p></div>
+      <div class="level athletics" level=2><p>田徑</p></div>
+      <div class="level badminton" level=3><p>羽毛球</p></div>
+      <div class="level basketball" level=4><p>籃球</p></div>
+      <div class="level beachvolleyball" level=5><p>沙灘排球</p></div>
+      <div class="level r1c6" level=6><p>拳擊</p></div>
+      <div class="level r2c1" level=7><p>皮划艇激流</p></div>
+      <div class="level r2c2" level=8><p>皮划艇衝刺</p></div>
+      <div class="level r2c3" level=9><p>自行車BMX</p></div>
+      <div class="level r2c4" level=10><p>山地自行車</p></div>
+      <div class="level r2c5" level=11><p>公路自行車</p></div>
+      <div class="level r2c6" level=12><p>場地自行車</p></div>
+      <div class="level r3c1" level=13><p>跳水</p></div>
+      <div class="level r3c2" level=14><p>馬術</p></div>
+      <div class="level r3c3" level=15><p>擊劍</p></div>
+      <div class="level r3c4" level=16><p>足球</p></div>
+      <div class="level r3c5" level=17><p>體操</p></div>
+      <div class="level r3c6" level=18><p>藝術體操</p></div>
+      <div class="level r4c1" level=19><p>手球</p></div>
+      <div class="level r4c2" level=20><p>曲棍球</p></div>
+      <div class="level r4c3" level=21><p>柔道</p></div>
+      <div class="level r4c4" level=22><p>現代五項</p></div>
+      <div class="level r4c5" level=23><p>賽艇</p></div>
+      <div class="level r4c6" level=24><p>帆船帆板</p></div>
+      <div class="level r5c1" level=25><p>射擊</p></div>
+      <div class="level r5c2" level=26><p>游泳</p></div>
+      <div class="level r5c3" level=27><p>花樣游泳</p></div>
+      <div class="level r5c4" level=28><p>乒乓球</p></div>
+      <div class="level r5c5" level=29><p>跆拳道</p></div>
+      <div class="level r5c6" level=30><p>網球</p></div>
+      <div class="level r6c1" level=31><p>蹦床</p></div>
+      <div class="level r6c2" level=32><p>鐵人三項</p></div>
+      <div class="level r6c3" level=33><p>排球</p></div>
+      <div class="level r6c4" level=34><p>水球</p></div>
+      <div class="level r6c5" level=35><p>舉重</p></div>
+      <div class="level r6c6" level=36><p>摔跤</p></div>
+      </div>         
+     
+	<div class="back" onClick="goHomePage()"></div>
+</div>
+
+<div id="gamePage">
+    <div class="back" onClick="goLevelPage('gamePage')"></div>  
+	<div id="gameLevelTitle">
+        <div id="gameTitleBg"></div>    
+        <div id="gameTitle"><p></p></div>
+        <div id="indicatorContainerBg"></div>
+        <div id="indicatorContainer"></div>
+	    <div id="timerBg"></div>                
+	    <div id="timer"><p>00:00</p></div>        
+	</div>    
+    <div class="sound" onClick="muteSound()"></div>  
+        
+    <div id="img1container"><img class="pic" id="img1" usemap="#imgMap" ></div>
+    <div id="img2container"><img class="pic" id="img2" ></div>                  
+    <map name="imgMap" id="imgMap"></map>
+
+	<div id="levelOver">
+    	
+    	<div id="firework1"></div>
+    	<div id="firework2"></div>
+    	<div id="firework3"></div>
+    	<div id="firework4"></div>        
+    </div>    
+</div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/olympicspot.js"></script> 
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">

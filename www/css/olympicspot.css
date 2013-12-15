@@ -1,0 +1,426 @@
+* {
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+body {
+	text-align: center;
+	margin: 0 auto;
+	width:1024px;
+}
+
+a img{
+border:0;
+}
+
+p {
+	font-family: "Comic Sans MS";	
+}
+
+#mainContent{
+width:1024px;height:768px;
+-webkit-user-select:none;
+-moz-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+#homePage {
+	position:absolute;
+	top: 0px;
+	width: 1024px;
+	height: 768px;
+	background-image:  url(../images/homebg.jpg);
+	background-size:100% 100%;		
+	visibility:visible;	
+	overflow: hidden;
+}
+
+div #homePage #play {
+	position:absolute;
+	left:769px;
+	top:376px;
+	width:229px;
+	height:94px;	
+	background-image:url(../images/play.png);
+	cursor:pointer;
+	}
+
+div #homePage .control {
+	position:absolute;
+	bottom: 30px;
+	height: 64px;
+	width: 64px;
+	float:left;
+	background-size:100% 100%;
+	z-index:5; /* prevent falling sparkles before it*/
+	}
+#homePage .control#facebook {background-image:url(../images/fb.png); left:330px; }
+#homePage .control#twitter {background-image:url(../images/twitter.png); left:460px; }
+#homePage .control#infobtn { background-image:url(../images/info.png); left:590px;}
+#homePage .control.sound { left:360px; display:none; }
+
+.sound {background-image:url(../images/soundOff.png);}
+
+
+#homePage #info {
+	position:absolute;
+	left:62px;
+	top: 44px;
+	height: 680px;
+	width: 900px;	
+	display:none;
+	z-index:6;
+	background-color:#fff;
+	opacity:0.9;
+	border-radius:20px;
+	-webkit-border-radius:20px;	
+}
+#homePage #howtoplayimg {position:absolute; width:144px;height:144px; background-size:100% 100%; background-image:url(../images/howtoplay.png); left:40px; top:100px;	border-radius:10px;
+	-webkit-border-radius:10px;	
+}
+#homePage #contactimg {position:absolute; width:144px;height:144px; background-size:100% 100%; background-image:url(../images/contact.png); left:40px; bottom:150px;	border-radius:20px;
+	-webkit-border-radius:20px;	
+}
+
+#homePage #languages { position:absolute; width:600px; height:50px; right:0px; top:30px; font-family: "Comic Sans MS"; font-size:24px;}
+#homePage #languages span {margin-right:10px; border-radius:10px; -webkit-border-radius:10px; border:solid thin #cecece; display:inline-block; width:120px;}
+#homePage #languages span.active{ background-color:yellow;}
+
+#homePage #infoList { position:absolute; width:700px; height:500px; left: 180px; top:70px; font-family: "Comic Sans MS";}
+#homePage #infoList ul { list-style-type: none;  font-size:20px; text-align:left; position:absolute; top:10px;}
+#homePage #infoList ul li { line-height:40px; }
+#homePage #infoList ul { display:none;}
+#homePage #infoList ul.active {display:block;}
+
+
+#homePage #info #backbtn {
+	position:absolute;left:400px;bottom:30px;width:90px;height:70px; background-size:100% 100%; cursor:pointer;
+	background-image:url(../images/backinfo.png); 
+}
+
+
+#levelPage {
+	position: absolute;
+	top: 0px;
+	width: 1024px;
+	height: 768px;
+	background-image:  url(../images/levelbg.jpg);
+	visibility:hidden;	
+}
+
+.back{position:absolute;left:25px;width:55px;height:55px; background-size:100% 100%; cursor:pointer;}
+#levelPage .back {background-image:url(../images/home.png); top:30px; left:25px; }
+
+#levelPage .levelGrid {position:absolute;top:44px;left:140px; }
+#levelPage .englishGrid { }
+#levelPage .chineseGrid {display:none; }
+#levelPage .traditionalGrid {display:none; }
+
+
+#levelPage .level {
+	width: 130px;
+	height: 110px;
+	cursor:pointer;
+	position: relative;
+	float:left;
+	background-size:80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 10%;
+	background-color:#80c6f0;
+	border-top:thin solid yellow;
+	border-left:thin solid yellow;	
+}
+
+.r1c6,.r2c6,.r3c6,.r4c6,.r5c6,.r6c6 {border-right:thin solid yellow;}
+.r6c1,.r6c2,.r6c3,.r6c4,.r6c5,.r6c6 {border-bottom:thin solid yellow;}
+
+
+#levelPage .level p {
+font-size:12px;  
+margin-top:92px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+#levelPage .archery {background-image:url(../images/sportsicon/Archery.png);}
+#levelPage .athletics {background-image:url(../images/sportsicon/Athletics.png); }
+#levelPage .badminton {background-image:url(../images/sportsicon/Badminton.png);}
+#levelPage .basketball {background-image:url(../images/sportsicon/Basketball.png); }
+#levelPage .beachvolleyball {background-image:url(../images/sportsicon/Beach_volleyball.png);}
+#levelPage .r1c6 {background-image:url(../images/sportsicon/Boxing.png); }
+#levelPage .r2c1 {background-image:url(../images/sportsicon/Canoeing_slalom.png); }
+#levelPage .r2c2 {background-image:url(../images/sportsicon/Canoeing_sprint.png); }
+#levelPage .r2c3 {background-image:url(../images/sportsicon/Cycling_BMX.png); }
+#levelPage .r2c4 {background-image:url(../images/sportsicon/Cycling_mountain.png); }
+#levelPage .r2c5 {background-image:url(../images/sportsicon/Cycling_road.png); }
+#levelPage .r2c6 {background-image:url(../images/sportsicon/Cycling_track.png); }
+
+#levelPage .r3c1 {background-image:url(../images/sportsicon/Diving.png); }
+#levelPage .r3c2 {background-image:url(../images/sportsicon/Equestrian.png); }
+#levelPage .r3c3 {background-image:url(../images/sportsicon/Fencing.png); }
+#levelPage .r3c4 {background-image:url(../images/sportsicon/Football.png); }
+#levelPage .r3c5 {background-image:url(../images/sportsicon/Gymnastics_artistic.png); }
+#levelPage .r3c6 {background-image:url(../images/sportsicon/Gymnastics_rhythmic.png); }
+#levelPage .r4c1 {background-image:url(../images/sportsicon/Handball.png); }
+#levelPage .r4c2 {background-image:url(../images/sportsicon/Hockey.png); }
+#levelPage .r4c3 {background-image:url(../images/sportsicon/Judo.png); }
+#levelPage .r4c4 {background-image:url(../images/sportsicon/Modern_pentathlon.png); }
+#levelPage .r4c5 {background-image:url(../images/sportsicon/Rowing.png); }
+#levelPage .r4c6 {background-image:url(../images/sportsicon/Sailing.png); }
+
+#levelPage .r5c1 {background-image:url(../images/sportsicon/Shooting.png); }
+#levelPage .r5c2 {background-image:url(../images/sportsicon/Swimming.png); }
+#levelPage .r5c3 {background-image:url(../images/sportsicon/Synchronized_swimming.png); }
+#levelPage .r5c4 {background-image:url(../images/sportsicon/Table_tennis.png); }
+#levelPage .r5c5 {background-image:url(../images/sportsicon/Taekwondo.png); }
+#levelPage .r5c6 {background-image:url(../images/sportsicon/Tennis.png); }
+#levelPage .r6c1 {background-image:url(../images/sportsicon/Trampoline.png); }
+#levelPage .r6c2 {background-image:url(../images/sportsicon/Triathlon.png); }
+#levelPage .r6c3 {background-image:url(../images/sportsicon/Volleyball.png); }
+#levelPage .r6c4 {background-image:url(../images/sportsicon/Water_polo.png); }
+#levelPage .r6c5 {background-image:url(../images/sportsicon/Weightlifting.png); }
+#levelPage .r6c6 {background-image:url(../images/sportsicon/Wrestling.png); }
+
+
+
+
+
+#gamePage {
+	position: absolute;
+	top: 0px;
+	width: 1024px;
+	height: 768px;
+	background-image:  url(../images/gamebg.jpg);
+	background-size:100% 100%;
+	visibility:hidden;	
+}
+
+#gamePage .back{top:30px; background-image:url(../images/back.png);}
+
+#gameLevelTitle {
+	position:absolute;
+	top: 30px;
+	width: 700px;
+	left: 160px;
+	height: 60px;	
+	opacity: 1;
+	z-index:2;	
+	}
+	
+#gameTitle, #gameTitleBg{
+	position:absolute;
+	width: 180px;
+	height:60px;
+	display: table;
+	border-bottom-left-radius:10px;
+	border-top-left-radius:10px;
+	-webkit-border-bottom-left-radius:10px;
+	-webkit-border-top-left-radius:10px;
+	-moz-border-bottom-left-radius:10px;
+	-moz-border-top-left-radius:10px;
+	}
+
+#gameTitleBg{
+	background-color:#f3f3cb;
+	opacity:0.8;
+	}
+
+#gameTitle p {
+	display: table-cell;
+	vertical-align:middle;	
+	font-size:22px;
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px blue;	
+	color: #ABB9F1;
+	letter-spacing: 1px;
+}
+
+#indicatorContainer, #indicatorContainerBg{
+	position:absolute;
+	top: 0px;
+	width: 320px;
+	left: 180px;
+	height: 60px;	
+	z-index:2;
+}
+
+#indicatorContainerBg{
+	background-color:#F5E8E8;
+	opacity:0.5;
+}
+
+#indicatorContainer > div {
+	display:inline-block;
+	margin:15px;
+	width:30px;
+	height:30px;
+	opacity: 1;	
+	background-image:url(../images/star.png);	
+	}
+
+.faultIndicator {
+	opacity:0;
+}
+
+
+#timer, #timerBg{
+	position:absolute;
+	left: 500px;
+	width: 180px;
+	height: 60px;
+	display: table;
+	border-bottom-right-radius:10px;
+	border-top-right-radius:10px;
+	-webkit-border-bottom-right-radius:10px;
+	-webkit-border-top-right-radius:10px;
+	-moz-border-bottom-right-radius:10px;
+	-moz-border-top-right-radius:10px;		
+	}
+	
+#timerBg{
+	background-color:#f3f3cb;
+	opacity:0.8;
+	}
+	
+	
+#timer p{	
+	display: table-cell;
+	vertical-align:middle;
+	font-size:30px;
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px blue;	
+	color: #ABB9F1;
+	letter-spacing:3px;
+	
+}
+
+#gamePage .sound{
+	position:absolute;
+	right:30px;
+	top:30px;
+	width:55px;
+	height:55px; 
+	background-size:100% 100%;
+	cursor:pointer;
+}
+	
+.fault {
+	position:absolute;	
+	width: 60px;
+	height: 60px;
+	border: blue solid;
+	border-radius:70%;
+	background:none;
+	opacity:0.6;	
+	z-index:5;		
+	}
+	
+#imgMap {
+	z-index:3;
+	}	
+	
+.faultImage {
+	position:absolute;	
+	width: 60px;
+	height: 60px;
+	background-size:100% 100%;
+	z-index:4;
+	}	
+	
+#fault1{left:10px; top: 20px;}	
+#fault2{left:650px; top: 80px;}	
+
+
+#img1container {
+	position:absolute;
+	width: 510px;
+	height: 510px;
+	top:120px;
+	border: solid black 1px;
+	z-index:2;
+}
+
+#img2container {
+	position:absolute;
+	width: 510px;
+	height: 510px;
+	left:512px;
+	top:120px;	
+	border: solid black 1px;	
+	z-index:2;	
+}
+
+.pic {
+	width: 510px;	
+	height: 510px;
+	z-index:3;
+}
+
+#levelOver {
+	position:absolute;
+	left: 200px;
+	top: 200px;
+	width: 624px;
+	height: 368px;
+	display: none;
+}
+
+#levelOver p {
+	display: table-cell;
+	vertical-align:middle;	
+	font-size:70px;
+	font-weight:bolder;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;	
+	color: #fcbc4a;
+	letter-spacing: 3px;
+}
+/*
+#ring{
+	position:absolute;
+	left: 200px;
+	top: 50px;
+	width: 225px;
+	height: 107px;
+	background-image:url(../images/ring.png);
+	background-size:100% 100%;
+}*/
+
+#firework1{
+	position:absolute;
+	left: 150px;
+	top: 206px;
+	width: 200px;
+	height: 200px;	
+	background-image:url(../images/2.gif);
+}
+
+#firework2{
+	position:absolute;
+	left: 300px;
+	top: 56px;
+	width: 128px;
+	height: 128px;		
+	background-image:url(../images/3.gif);
+}
+
+#firework3{
+	position:absolute;
+	left: 370px;
+	top: 96px;
+	width: 95px;
+	height: 200px;		
+	background-image:url(../images/1.gif);
+}
+
+#firework4{
+	position:absolute;
+	left: 30px;
+	top: 26px;
+	width: 75px;
+	height: 191px;		
+	background-image:url(../images/4.gif);
+}
+
+
+.faultIndicatorRemoved {
+
+}

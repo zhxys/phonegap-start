@@ -1,77 +1,178 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<html lang=en>
+<head>
+<title>Olympic spot!</title>
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">      
+        <!-- iPad/iPhone specific css below, add after your main css >
+         <link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px)" href="olympicspotipad.css" type="text/css" />		
+         <link rel="stylesheet" media="only screen and (resolution:326dpi)" href="iphone.css" type="text/css" />	        	
+         -->
+        <link rel="stylesheet" href="css/olympicspot.css" type="text/css" />
+        <link rel="stylesheet" href="css/leaves.css" type="text/css" />        	
+        <!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+        <!-- script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script -->
+        <script type="text/javascript" src="phonegap.js"></script>
+		<script type="application/javascript" src="js/fastclick.js"></script>
+        <script type="text/javascript">
+            
+            // Audio player
+            var wrongSound = null;
+            var rightSound = null;
+            var fireworkSound = null;
+			var co = 1; //iPad co=1, iphone co=478/510
+			//var lang = "en";  //1:english
+            
+            // If you want to prevent dragging, uncomment this section
+            
+             function preventBehavior(e) 
+             { 
+             e.preventDefault(); 
+             };
+             document.addEventListener("touchmove", preventBehavior, false);
+            
+            window.addEventListener('load', function() {
+                                    new FastClick(document.body);
+                                    }, false);
+            
+            /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+             see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+             for more details -jm */
+            /*
+             function handleOpenURL(url)
+             {
+             // TODO: do something with the url passed in.
+             }
+             */
+            
+            function onBodyLoad()
+            {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+            
+            /* When this function is called, Cordova has been initialized and is ready to roll */
+            /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+             see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+             for more details -jm */
+            function onDeviceReady()
+            {
+                // do your thing!
+                //navigator.notification.alert("Cordova is working");
+                // document.addEventListener("resume", onResume, false);
+                
+                if (typeof(lang) !== 'undefined'){
+                    console.log("lang is" + lang);
+                    if (lang.indexOf("Hans") >= 0){
+                        initLanguage(1);
+                        $("#chineseinfo").addClass("active");
+                    }else if (lang.indexOf("Hant") >= 0){
+                        initLanguage(2);
+                        $("#traditionalinfo").addClass("active");
+                    }else if (lang.indexOf("fi") >= 0){
+                        initLanguage(3);
+                        $("#suomiinfo").addClass("active");
+                    }else if (lang.indexOf("de") >= 0){
+                        initLanguage(4);
+                        $("#englishinfo").addClass("active");
+                    }else {
+                        initLanguage(0); 
+                        $("#englishinfo").addClass("active");
+                    }
+                }else{
+                    console.log("lang undefined");
+                    initLanguage(0);
+                    $("#englishinfo").addClass("active");
+                }
+            }
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" href="css/olympicspot.css" type="text/css" />	
-        <link rel="stylesheet" href="css/leaves.css" type="text/css" media="screen">		
-        <title>Olympic spot!</title>
-    </head>
-    <body>
-        <!-- div class="app">
-            <h1>Hello Song</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div -->
+            function onResume()
+            {
+                
+                //document.getElementById('bgMusic').play();
+            }
+                      
+            function playSound(index) {
+                if (index == 1) {
+                    if (rightSound == null) {  
+                        rightSound = new Media("audio/right.mp3",onSuccess,onError);
+                     }   
+                    rightSound.play();
+                } else if (index ==2) {
+                    if (wrongSound == null) {
+                        wrongSound = new Media("audio/wrong.mp3",onSuccess,onError);
+                    }
+                    wrongSound.play();
+                } else if (index ==3) {
+                    if (fireworkSound == null) {
+                        fireworkSound = new Media("audio/firework.mp3",onSuccess,onError);
+                    }
+                    fireworkSound.play();
+                }
+                
+            }
+            
+            // onSuccess Callback
+            //
+            function onSuccess() {
+                console.log("playAudio():Audio Success");
+            }
+            
+            // onError Callback 
+            //
+            function onError(error) {
+                console.log("playAudio():Audio failed");
+            }
+                       
+            
+            
+            </script>
+    
+</head>
+
+<body onload="onBodyLoad()">
 <div id="mainContent">
 <div id="homePage">
-
+	<div id="leafContainer"></div>
+    <div id="homebg1"></div>
     <div id="play" onClick="goLevelPage('homePage');"></div>
     <div class="control sound" onClick="muteSound()"></div>
     <div class="control" id="infobtn"></div>
-    <a href="http://www.facebook.com/pages/Vauvasoft/418589874832916"><div class="control" id="facebook"></div></a>
-    <a href="http://www.twitter.com/vauvasoft"><div class="control" id="twitter"></div></a>
     <div id="info">
   	  <div id="howtoplayimg"></div>
       <div id="contactimg"></div>
-      <div id="languages"><span id="english" class="active">English</span><span id="chinese">ÖĞÎÄ</span><span id="traditional">·±ÌåÖĞÎÄ</span></div>
-
       <div id="infoList">
-        <ul id="chineseinfo" >
-            <li><strong>Íæ·¨½éÉÜ£º</strong><p>- ÔÚÁ½·ùÏàËÆÍ¼Æ¬ÖĞÕÒ³ö3-5´¦²»Í¬¡£<br>- Í¬Ò»×éÍ¼Æ¬Ã¿´ÎÍæÊ±²»Í¬Ö®´¦ÊÇËæ»úµÄ¡£<br>- ¿ÉÒÔÍ¨¹ıÉùÒôÍ¼±ê´ò¿ª»ò¹ØÉÏÒôĞ§¡£</p><br><br></li>
-            <li><strong>ÁªÏµ£º</strong><p> Èç¹ûÓĞÊ²Ã´Ï£Íû»ò·¢ÏÖ´íÎó£¬Çë·¢ËÍµç×ÓÓÊ¼şµ½ vauvasoft@gmail.com¡£<br>Ï£ÍûÄãÏ²»¶£¡</p></li>
+        <ul id="chineseinfo">
+            <li><strong>ç©æ³•ä»‹ç»ï¼š</strong><p>- åœ¨ä¸¤å¹…ç›¸ä¼¼å›¾ç‰‡ä¸­æ‰¾å‡º3-5å¤„ä¸åŒã€‚<br>- åŒä¸€ç»„å›¾ç‰‡æ¯æ¬¡ç©æ—¶ä¸åŒä¹‹å¤„æ˜¯éšæœºçš„ã€‚<br>- å¯ä»¥é€šè¿‡å£°éŸ³å›¾æ ‡æ‰“å¼€æˆ–å…³ä¸ŠéŸ³æ•ˆã€‚<br>- å¯ä»¥é€šè¿‡çš®è‚¤å›¾æ ‡æ”¹å˜æ¸¸æˆç•Œé¢çš„çš®è‚¤ã€‚</p><br></li>
+            <li><strong>è”ç³»ï¼š</strong><p> å¦‚æœæœ‰ä»€ä¹ˆå¸Œæœ›æˆ–å‘ç°é”™è¯¯ï¼Œè¯·å‘é€ç”µå­é‚®ä»¶åˆ° vauvasoft@gmail.comã€‚<br>å¸Œæœ›ä½ å–œæ¬¢ï¼</p></li>
         </ul> 
-        <ul id="englishinfo" class="active">
-            <li><strong>How to play:</strong><p>- Find 3-5 differences between two similar images.<br>- Differences are random in the same pair images every time you play.<br>- Sound effects can be switch on/off by pressing the sound icon.</p><br><br></li>
+        <ul id="englishinfo">
+            <li><strong>How to play:</strong><p>- Find 3-5 differences between two similar images.<br>- Differences are random in the same pair images every time you play.<br>- Sound effects can be switch on/off by pressing the sound icon.<br>- You can change the game page skin by touching the skin icon.</p><br></li>
             <li><strong>Contact:</strong><p> For any wishes or bug reports, please send an Email to vauvasoft@gmail.com. Enjoy!</p></li>
         </ul> 
         <ul id="traditionalinfo">
-<li><strong>Íæ·¨½é½B£º</strong><p>- ÔÚƒÉ·ùÏàËÆˆDÆ¬ÖĞÕÒ³ö3-5Ì²»Í¬¡£<br>- Í¬Ò»½MˆDÆ¬Ã¿´ÎÍæ•r²»Í¬Ö®ÌÊÇëS™CµÄ¡£<br>- ¿ÉÒÔÍ¨ß^Â•ÒôˆD˜Ë´òé_»òêPÉÏÒôĞ§¡£</p><br><br></li>
-            <li><strong>Â“Ïµ£º</strong><p> Èç¹ûÓĞÊ²÷áÏ£Íû»ò°l¬FåeÕ`£¬Õˆ°lËÍëŠ×Óà]¼şµ½ vauvasoft@gmail.com¡£<br>Ï£ÍûÄãÏ²šg£¡</p></li>
+            <li><strong>ç©æ³•ä»‹ç´¹ï¼š</strong><p>- åœ¨å…©å¹…ç›¸ä¼¼åœ–ç‰‡ä¸­æ‰¾å‡º3-5è™•ä¸åŒã€‚<br>- åŒä¸€çµ„åœ–ç‰‡æ¯æ¬¡ç©æ™‚ä¸åŒä¹‹è™•æ˜¯éš¨æ©Ÿçš„ã€‚<br>- å¯ä»¥é€šéè²éŸ³åœ–æ¨™æ‰“é–‹æˆ–é—œä¸ŠéŸ³æ•ˆã€‚<br>- å¯ä»¥é€šéä¸»é¡Œåœ–æ¨™æ”¹è®ŠéŠæˆ²ç•Œé¢çš„ä¸»é¡Œã€‚</p><br></li>
+            <li><strong>è¯ç³»ï¼š</strong><p> å¦‚æœæœ‰ä»€éº½å¸Œæœ›æˆ–ç™¼ç¾éŒ¯èª¤ï¼Œè«‹ç™¼é€é›»å­éƒµä»¶åˆ° vauvasoft@gmail.comã€‚<br>å¸Œæœ›ä½ å–œæ­¡ï¼</p></li>
         </ul> 
+        <ul id="suomiinfo">
+            <li><strong>Pelaa:</strong><p>- Etsi erot kaksi samanlaisessa kuvassa.<br>- Jokaisessa kuvassa on 3-5 satunnaista eroa joka kerta kun pelaat.<br>- Ã„Ã¤ni voidaan kytkeÃ¤ pÃ¤Ã¤lle/pois painamalla Ã¤Ã¤nen kuvaketta.<br>- Voit muuttaa pelin teeman ihoa koskettamalla teeman kuvaketta.</p><br></li>
+            <li><strong>Ota yhteyttÃ¤:</strong><p> LÃ¤hetÃ¤ sÃ¤hkÃ¶postia vauvasoft@gmail.com, jos on jotta toiveita tai vikailmoituksia. Olkaa hyvÃ¤!</p></li>
+        </ul>         
         </div>
-        <div id="backbtn""></div>
+        <a href="http://www.facebook.com/pages/Vauvasoft/418589874832916"><div class="control" id="facebook"></div></a>
+        <a href="http://www.twitter.com/vauvasoft"><div class="control" id="twitter"></div></a>
+        <a href="https://itunes.apple.com/us/app/find-differences-animal-sports/id541064726?ls=1&mt=8"><div class="control" id="rating"></div></a>        
+        <div id="backbtn"></div>
     </div>
-    <div id="leafContainer">
+    <!-- div id="leafContainer">
             <div style="left:331px;top:293px;"><img src="images/balloon1.png"> </div>
             <div style="left:406px;top:359px;"><img src="images/balloon2.png"> </div>
             <div style="left:450px;top:292px;"><img src="images/balloon3.png"> </div>
             <div style="left:488px;top:332px;"><img src="images/balloon4.png"> </div>
             <div style="left:545px;top:290px;"><img src="images/balloon5.png"> </div>
             
-    </div>
+    </div -->
 </div>
 
 <div id="levelPage">
@@ -117,87 +218,7 @@
       <div class="level r6c5" level=35><p>Weightlifting</p></div>
       <div class="level r6c6" level=36><p>Wrestling</p></div>      
 	 </div>
-     
-    <div class="levelGrid chineseGrid">
-      <div class="level archery" level=1><p>Éä¼ı</p></div>
-      <div class="level athletics" level=2><p>Ìï¾¶</p></div>
-      <div class="level badminton" level=3><p>ÓğÃ«Çò</p></div>
-      <div class="level basketball" level=4><p>ÀºÇò</p></div>
-      <div class="level beachvolleyball" level=5><p>É³Ì²ÅÅÇò</p></div>
-      <div class="level r1c6" level=6><p>È­»÷</p></div>
-      <div class="level r2c1" level=7><p>Æ¤»®Í§¼¤Á÷»ØĞı</p></div>
-      <div class="level r2c2" level=8><p>Æ¤»®Í§³å´Ì</p></div>
-      <div class="level r2c3" level=9><p>×ÔĞĞ³µBMX</p></div>
-      <div class="level r2c4" level=10><p>É½µØ×ÔĞĞ³µ</p></div>            
-      <div class="level r2c5" level=11><p>¹«Â·×ÔĞĞ³µ</p></div>
-      <div class="level r2c6" level=12><p>³¡µØ×ÔĞĞ³µ</p></div>
-      <div class="level r3c1" level=13><p>ÌøË®</p></div>
-      <div class="level r3c2" level=14><p>ÂíÊõ</p></div>
-      <div class="level r3c3" level=15><p>»÷½£</p></div>
-      <div class="level r3c4" level=16><p>×ãÇò</p></div>
-      <div class="level r3c5" level=17><p>Ìå²Ù</p></div>
-      <div class="level r3c6" level=18><p>ÒÕÊõÌå²Ù</p></div>
-      <div class="level r4c1" level=19><p>ÊÖÇò</p></div>
-      <div class="level r4c2" level=20><p>Çú¹÷Çò</p></div>
-      
-      <div class="level r4c3" level=21><p>ÈáµÀ</p></div>
-      <div class="level r4c4" level=22><p>ÏÖ´úÎåÏî</p></div>
-      <div class="level r4c5" level=23><p>ÈüÍ§</p></div>
-      <div class="level r4c6" level=24><p>·«´¬·«°å</p></div>
-      <div class="level r5c1" level=25><p>Éä»÷</p></div>
-      <div class="level r5c2" level=26><p>ÓÎÓ¾</p></div>
-      <div class="level r5c3" level=27><p>»¨ÑùÓÎÓ¾</p></div>
-      <div class="level r5c4" level=28><p>Æ¹ÅÒÇò</p></div>
-      <div class="level r5c5" level=29><p>õÌÈ­µÀ</p></div>
-      <div class="level r5c6" level=30><p>ÍøÇò</p></div>
-      
-      <div class="level r6c1" level=31><p>±Ä´²</p></div>
-      <div class="level r6c2" level=32><p>ÌúÈËÈıÏî</p></div>
-      <div class="level r6c3" level=33><p>ÅÅÇò</p></div>
-      <div class="level r6c4" level=34><p>Ë®Çò</p></div>
-      <div class="level r6c5" level=35><p>¾ÙÖØ</p></div>
-      <div class="level r6c6" level=36><p>Ë¤õÓ</p></div>      
-	 </div>     
-     
-    <div class="levelGrid traditionalGrid">
-	  <div class="level archery" level=1><p>Éä¼ı</p></div>
-      <div class="level athletics" level=2><p>Ìï½</p></div>
-      <div class="level badminton" level=3><p>ÓğÃ«Çò</p></div>
-      <div class="level basketball" level=4><p>»@Çò</p></div>
-      <div class="level beachvolleyball" level=5><p>É³©ÅÅÇò</p></div>
-      <div class="level r1c6" level=6><p>È­“ô</p></div>
-      <div class="level r2c1" level=7><p>Æ¤»®Í§¼¤Á÷</p></div>
-      <div class="level r2c2" level=8><p>Æ¤»®Í§Ğn´Ì</p></div>
-      <div class="level r2c3" level=9><p>×ÔĞĞÜ‡BMX</p></div>
-      <div class="level r2c4" level=10><p>É½µØ×ÔĞĞÜ‡</p></div>
-      <div class="level r2c5" level=11><p>¹«Â·×ÔĞĞÜ‡</p></div>
-      <div class="level r2c6" level=12><p>ˆöµØ×ÔĞĞÜ‡</p></div>
-      <div class="level r3c1" level=13><p>ÌøË®</p></div>
-      <div class="level r3c2" level=14><p>ñRĞg</p></div>
-      <div class="level r3c3" level=15><p>“ô„¦</p></div>
-      <div class="level r3c4" level=16><p>×ãÇò</p></div>
-      <div class="level r3c5" level=17><p>ów²Ù</p></div>
-      <div class="level r3c6" level=18><p>Ë‡Ğgów²Ù</p></div>
-      <div class="level r4c1" level=19><p>ÊÖÇò</p></div>
-      <div class="level r4c2" level=20><p>Çú¹÷Çò</p></div>
-      <div class="level r4c3" level=21><p>ÈáµÀ</p></div>
-      <div class="level r4c4" level=22><p>¬F´úÎåí—</p></div>
-      <div class="level r4c5" level=23><p>ÙÍ§</p></div>
-      <div class="level r4c6" level=24><p>·«´¬·«°å</p></div>
-      <div class="level r5c1" level=25><p>Éä“ô</p></div>
-      <div class="level r5c2" level=26><p>ÓÎÓ¾</p></div>
-      <div class="level r5c3" level=27><p>»¨˜ÓÓÎÓ¾</p></div>
-      <div class="level r5c4" level=28><p>Æ¹ÅÒÇò</p></div>
-      <div class="level r5c5" level=29><p>õÌÈ­µÀ</p></div>
-      <div class="level r5c6" level=30><p>¾WÇò</p></div>
-      <div class="level r6c1" level=31><p>±Ä´²</p></div>
-      <div class="level r6c2" level=32><p>èFÈËÈıí—</p></div>
-      <div class="level r6c3" level=33><p>ÅÅÇò</p></div>
-      <div class="level r6c4" level=34><p>Ë®Çò</p></div>
-      <div class="level r6c5" level=35><p>ÅeÖØ</p></div>
-      <div class="level r6c6" level=36><p>Ë¤õÓ</p></div>
-      </div>         
-     
+
 	<div class="back" onClick="goHomePage()"></div>
 </div>
 
@@ -212,6 +233,8 @@
 	    <div id="timer"><p>00:00</p></div>        
 	</div>    
     <div class="sound" onClick="muteSound()"></div>  
+    <div class="skin" onClick="changeTheme()"></div>             
+
         
     <div id="img1container"><img class="pic" id="img1" usemap="#imgMap" ></div>
     <div id="img2container"><img class="pic" id="img2" ></div>                  
@@ -229,10 +252,11 @@
 
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/olympicspot.js"></script> 
-        <script type="text/javascript" src="phonegap.js"></script>
+        
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
-    </body>
+<script type="text/javascript" src="js/leaves.js"></script>              
+</body>
 </html>

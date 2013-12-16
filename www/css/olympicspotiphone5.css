@@ -1,0 +1,557 @@
+* {
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+body {
+	text-align: center;
+	margin: 0 auto;
+	width:1136px;
+}
+
+a img{
+border:0;
+}
+
+p {
+	font-family: "Comic Sans MS";	
+}
+
+#mainContent{
+width:1136px;height:640px;
+-webkit-user-select:none;
+-moz-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+#homePage {
+	position:absolute;
+	top: 0px;
+	width: 1136px;
+	height: 640px;
+	background-image:  url(../images/homebg.jpg);
+	background-size:100% 100%;		
+	visibility:visible;	
+	overflow: hidden;
+}
+
+#homePage #homebg1 {
+	position:absolute;
+	top: 0px;
+	width: 1136px;
+	height: 640px;	
+	background-image:url(../images/homebg.png);
+	background-size:100% 100%;
+	z-index:3;
+	}
+
+div #homePage #play {
+	position:absolute;
+	left:840px;
+	top:315px;
+	width:229px;
+	height:94px;	
+	background-image:url(../images/play.png);
+	cursor:pointer;
+	z-index:5;	
+	}
+
+div #homePage .control {
+	position:absolute;
+	bottom: 30px;
+	height: 64px;
+	width: 64px;
+	float:left;
+	background-size:100% 100%;
+	z-index:5; /* prevent falling sparkles before it*/
+	}
+
+#homePage .control#infobtn { background-image:url(../images/info.png); left:550px;}
+#homePage .control.sound { left:360px; display:none; }
+
+.sound {background-image:url(../images/soundOff.png);}
+
+
+#homePage #info {
+	position:absolute;
+	left:118px;
+	top: 20px;
+	height: 600px;
+	width: 900px;	
+	display:none;
+	z-index:6;
+	background-color:#fff;
+	opacity:0.9;
+	border-radius:20px;
+	-webkit-border-radius:20px;	
+}
+#homePage #howtoplayimg {position:absolute; width:144px;height:144px; background-size:100% 100%; background-image:url(../images/howtoplay.png); left:40px; top:55px;	border-radius:10px;
+	-webkit-border-radius:10px;	
+}
+#homePage #contactimg {position:absolute; width:144px;height:144px; background-size:100% 100%; background-image:url(../images/contact.png); left:40px; bottom:135px;	border-radius:20px;
+	-webkit-border-radius:20px;	
+}
+
+#homePage #languages { position:absolute; width:600px; height:50px; right:0px; top:30px; font-family: "Comic Sans MS"; font-size:24px;}
+#homePage #languages span {margin-right:10px; border-radius:10px; -webkit-border-radius:10px; border:solid thin #cecece; display:inline-block; width:120px}
+#homePage #languages span.active{ background-color:yellow;}
+
+#homePage #infoList { position:absolute; width:700px; height:500px; left: 180px; top:20px; font-family: "Comic Sans MS";}
+#homePage #infoList ul { list-style-type: none;  font-size:20px; text-align:left; position:absolute;}
+#homePage #infoList ul li { line-height:40px; }
+#homePage #infoList ul { display:none;}
+#homePage #infoList ul.active {display:block;}
+
+
+#homePage #info #backbtn {
+	position:absolute;left:750px;bottom:30px;width:90px;height:70px; background-size:100% 100%; cursor:pointer;
+	background-image:url(../images/backinfo.png); 
+}
+#facebook {background-image:url(../images/fb.png); left:150px; }
+#twitter {background-image:url(../images/twitter.png); left:300px; }
+#rating {background-image:url(../images/rating.png); left:450px; }
+
+#levelPage {
+	position: absolute;
+	top: 0px;
+	width: 1136px;
+	height: 640px;
+	background-image:  url(../images/theme0.png);
+	background-size:100% 100%;
+	visibility:hidden;	
+}
+
+.back{position:absolute;left:25px;width:65px;height:65px; background-size:100% 100%; cursor:pointer;}
+#levelPage .back {background-image:url(../images/home.png); top:15px; left:25px; }
+
+#levelPage .levelGrid {position:absolute;top:18px;left:200px; width:800px; }
+#levelPage .englishGrid { }
+#levelPage .chineseGrid {display:none; }
+#levelPage .traditionalGrid {display:none; }
+
+
+#levelPage .level {
+	width: 120px;
+	height: 100px;
+	cursor:pointer;
+	position: relative;
+	float:left;
+	background-size:70px 70px;
+	background-repeat:no-repeat;
+	background-position:50% 10%;
+	background-color:rgba(128, 198, 240, 0.7);
+	border-top:thin solid rgba(255, 255, 0, 0.5);
+	border-left:thin solid rgba(255, 255, 0, 0.5);	
+}
+
+.r1c6,.r2c6,.r3c6,.r4c6,.r5c6,.r6c6 {border-right:thin solid rgba(255, 255, 0, 0.5);}
+.r6c1,.r6c2,.r6c3,.r6c4,.r6c5,.r6c6 {border-bottom:thin solid rgba(255, 255, 0, 0.5);}
+
+
+#levelPage .level p {
+font-size:12px;  
+margin-top:78px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+#levelPage .archery {background-image:url(../images/sportsicon/Archery.png);}
+#levelPage .athletics {background-image:url(../images/sportsicon/Athletics.png); }
+#levelPage .badminton {background-image:url(../images/sportsicon/Badminton.png);}
+#levelPage .basketball {background-image:url(../images/sportsicon/Basketball.png); }
+#levelPage .beachvolleyball {background-image:url(../images/sportsicon/Beach_volleyball.png);}
+#levelPage .r1c6 {background-image:url(../images/sportsicon/Boxing.png); }
+#levelPage .r2c1 {background-image:url(../images/sportsicon/Canoeing_slalom.png); }
+#levelPage .r2c2 {background-image:url(../images/sportsicon/Canoeing_sprint.png); }
+#levelPage .r2c3 {background-image:url(../images/sportsicon/Cycling_BMX.png); }
+#levelPage .r2c4 {background-image:url(../images/sportsicon/Cycling_mountain.png); }
+#levelPage .r2c5 {background-image:url(../images/sportsicon/Cycling_road.png); }
+#levelPage .r2c6 {background-image:url(../images/sportsicon/Cycling_track.png); }
+
+#levelPage .r3c1 {background-image:url(../images/sportsicon/Diving.png); }
+#levelPage .r3c2 {background-image:url(../images/sportsicon/Equestrian.png); }
+#levelPage .r3c3 {background-image:url(../images/sportsicon/Fencing.png); }
+#levelPage .r3c4 {background-image:url(../images/sportsicon/Football.png); }
+#levelPage .r3c5 {background-image:url(../images/sportsicon/Gymnastics_artistic.png); }
+#levelPage .r3c6 {background-image:url(../images/sportsicon/Gymnastics_rhythmic.png); }
+#levelPage .r4c1 {background-image:url(../images/sportsicon/Handball.png); }
+#levelPage .r4c2 {background-image:url(../images/sportsicon/Hockey.png); }
+#levelPage .r4c3 {background-image:url(../images/sportsicon/Judo.png); }
+#levelPage .r4c4 {background-image:url(../images/sportsicon/Modern_pentathlon.png); }
+#levelPage .r4c5 {background-image:url(../images/sportsicon/Rowing.png); }
+#levelPage .r4c6 {background-image:url(../images/sportsicon/Sailing.png); }
+
+#levelPage .r5c1 {background-image:url(../images/sportsicon/Shooting.png); }
+#levelPage .r5c2 {background-image:url(../images/sportsicon/Swimming.png); }
+#levelPage .r5c3 {background-image:url(../images/sportsicon/Synchronized_swimming.png); }
+#levelPage .r5c4 {background-image:url(../images/sportsicon/Table_tennis.png); }
+#levelPage .r5c5 {background-image:url(../images/sportsicon/Taekwondo.png); }
+#levelPage .r5c6 {background-image:url(../images/sportsicon/Tennis.png); }
+#levelPage .r6c1 {background-image:url(../images/sportsicon/Trampoline.png); }
+#levelPage .r6c2 {background-image:url(../images/sportsicon/Triathlon.png); }
+#levelPage .r6c3 {background-image:url(../images/sportsicon/Volleyball.png); }
+#levelPage .r6c4 {background-image:url(../images/sportsicon/Water_polo.png); }
+#levelPage .r6c5 {background-image:url(../images/sportsicon/Weightlifting.png); }
+#levelPage .r6c6 {background-image:url(../images/sportsicon/Wrestling.png); }
+
+
+
+
+
+#gamePage {
+	position: absolute;
+	top: 0px;
+	width: 1136px;
+	height: 640px;
+	background-image:  url(../images/theme0.png);
+	visibility:hidden;	
+}
+
+#gamePage .back{top:15px; background-image:url(../images/back.png); left:20px;}
+
+#gameLevelTitle {
+	position:absolute;
+	top: 15px;
+	width: 760px;
+	left: 210px;
+	height: 60px;	
+	opacity: 1;
+	z-index:2;	
+	}
+	
+#gameTitle, #gameTitleBg{
+	position:absolute;
+	width: 270px;
+	height:60px;
+	display: table;
+	border-bottom-left-radius:10px;
+	border-top-left-radius:10px;
+	-webkit-border-bottom-left-radius:10px;
+	-webkit-border-top-left-radius:10px;
+	-moz-border-bottom-left-radius:10px;
+	-moz-border-top-left-radius:10px;
+	}
+
+#gameTitleBg{
+	background-color:#A7A74F;
+	opacity:0.8;
+	}
+
+#gameTitle p {
+	display: table-cell;
+	vertical-align:middle;	
+	font-size:22px;
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px blue;	
+	color: #F3ECF0;
+	letter-spacing: 1px;
+}
+
+#indicatorContainer, #indicatorContainerBg{
+	position:absolute;
+	top: 0px;
+	width: 350px;
+	left: 270px;
+	height: 60px;	
+	z-index:2;
+}
+
+#indicatorContainerBg{
+	background-color:#CE7777;
+	opacity:0.5;
+}
+
+#indicatorContainer > div {
+	display:inline-block;
+	margin:10px;
+	width:30px;
+	height:30px;
+	opacity: 1;	
+	background-image:url(../images/star.png);	
+	}
+
+.faultIndicator {
+	opacity:0;
+}
+
+
+#timer, #timerBg{
+	position:absolute;
+	left: 620px;
+	width: 140px;
+	height: 60px;
+	display: table;
+	border-bottom-right-radius:10px;
+	border-top-right-radius:10px;
+	-webkit-border-bottom-right-radius:10px;
+	-webkit-border-top-right-radius:10px;
+	-moz-border-bottom-right-radius:10px;
+	-moz-border-top-right-radius:10px;		
+	}
+	
+#timerBg{
+	background-color:#A7A74F;
+	opacity:0.8;
+	}
+	
+	
+#timer p{	
+	display: table-cell;
+	vertical-align:middle;
+	font-size:30px;
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px blue;	
+	color: #F3ECF0;
+	letter-spacing:3px;
+	
+}
+
+#gamePage .sound{
+	position:absolute;
+	left:120px;
+	top:15px;
+	width:65px;
+	height:65px; 
+	background-size:100% 100%;
+	cursor:pointer;
+}
+
+#gamePage .skin{
+	position:absolute;
+	right:60px;
+	top:15px;
+	width:65px;
+	height:65px; 
+	background-size:100% 100%;
+	background-image:url(../images/skin.png);
+}
+
+#gamePage #ad, #gamePage #ad1{
+	position:absolute;
+	right:20px;
+	top:15px;
+	width:65px;
+	height:65px; 
+	background-size:100% 100%;
+}
+
+#gamePage #ad{
+	background-image:url(../images/ad.png);
+}
+
+#gamePage #ad1{
+	background-image:url(../images/ad1.png);
+}
+
+.showAd{
+    -webkit-animation:twinkle 2s infinite;
+}
+
+
+@-webkit-keyframes twinkle {
+	0%   { opacity: 0; }
+	50% { opacity: 1; }  
+	100% { opacity: 0; }
+}
+	
+.fault {
+	position:absolute;	
+	width: 60px;
+	height: 60px;
+	border: blue solid;
+	border-radius:70%;
+	background:none;
+	opacity:0.6;	
+	z-index:5;		
+	}
+	
+#imgMap {
+	z-index:3;
+	}	
+	
+.faultImage {
+	position:absolute;	
+	width: 60px;
+	height: 60px;
+	background-size:100% 100%;
+	z-index:4;
+	}	
+	
+#fault1{left:10px; top: 20px;}	
+#fault2{left:650px; top: 80px;}	
+
+
+#img1container {
+	position:absolute;
+	width:478px;
+	height:478px;
+	top:88px;
+	left:62px;
+	border: solid black 1px;
+	z-index:2;
+}
+
+#img2container {
+	position:absolute;
+	width:478px;
+	height:478px;
+	left:592px;
+	top:88px;	
+	border: solid black 1px;	
+	z-index:2;	
+}
+
+.pic {
+	width:478px;	
+	height:478px;
+	z-index:3;
+}
+
+#levelOver {
+	position:absolute;
+	left: 300px;
+	top: 160px;
+	width: 421px;
+	height: 300px;
+	display: none;
+}
+
+#levelOver p {
+	display: table-cell;
+	vertical-align:middle;	
+	font-size:70px;
+	font-weight:bolder;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;	
+	color: #fcbc4a;
+	letter-spacing: 3px;
+}
+
+#firework1{
+	position:absolute;
+	left: 30px;
+	top: 16px;
+	width: 200px;
+	height: 200px;	
+	background-image:url(../images/2.gif);
+}
+
+#firework2{
+	position:absolute;
+	left: 150px;
+	top: 96px;
+	width: 128px;
+	height: 128px;		
+	background-image:url(../images/3.gif);
+}
+
+#firework3{
+	position:absolute;
+	left: 280px;
+	top: 56px;
+	width: 95px;
+	height: 200px;		
+	background-image:url(../images/1.gif);
+}
+
+#firework4{
+	position:absolute;
+	left: 200px;
+	top: 236px;
+	width: 75px;
+	height: 191px;		
+	background-image:url(../images/4.gif);
+}
+
+
+.faultIndicatorRemoved {
+
+}
+
+
+
+
+
+/* Defines the position and dimensions of the leafContainer div */
+#leafContainer 
+{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+}
+
+
+/* This CSS rule is applied to all div elements in the leafContainer div.
+   It styles and animates each leafDiv.
+*/
+#leafContainer > div 
+{
+    position: absolute;
+    width: 105px;
+    height: 185px;
+    
+    /* We use the following properties to apply the fade and drop animations to each leaf.
+       Each of these properties takes two values. These values respectively match a setting
+       for fade and drop.
+    */
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-direction: normal, normal;
+    -webkit-animation-timing-function: linear, ease-in;
+}
+
+/* This CSS rule is applied to all img elements directly inside div elements which are
+   directly inside the leafContainer div. In other words, it matches the 'img' elements
+   inside the leafDivs which are created in the createALeaf() function.
+*/
+#leafContainer > div > img {
+     /*position: absolute;*/
+     width: 105px;
+     height: 185px;
+
+    /* We use the following properties to adjust the clockwiseSpin or counterclockwiseSpinAndFlip
+       animations on each leaf.
+       The createALeaf function in the Leaves.js file determines whether a leaf has the 
+       clockwiseSpin or counterclockwiseSpinAndFlip animation.
+    */
+     -webkit-animation-iteration-count: infinite;
+     -webkit-animation-direction: alternate;
+     -webkit-animation-timing-function: ease-in-out;
+     -webkit-transform-origin: 50% -100%;
+}
+
+
+/* Hides a leaf towards the very end of the animation */
+@-webkit-keyframes fade
+{
+    /* Show a leaf while into or below 95 percent of the animation and hide it, otherwise */
+    0%   { width:100%; height:100%; opacity: 1; }
+    90%  {  width:60%; height:60%; opacity: 0.9; }
+    100% {  width:2%; height:2%; opacity: 0.7; }
+}
+
+
+/* Makes a leaf fall from -300 to 600 pixels in the y-axis */
+@-webkit-keyframes drop
+{
+    /* Move a leaf to -300 pixels in the y-axis at the start of the animation */
+    0%   { -webkit-transform: translate(-10px, 468px); }
+    /* Move a leaf to 600 pixels in the y-axis at the end of the animation */
+    100% { -webkit-transform: translate(1224px, -200px); }
+}
+
+/* Rotates a leaf from -50 to 50 degrees in 2D space */
+@-webkit-keyframes clockwiseSpin
+{
+    /* Rotate a leaf by -50 degrees in 2D space at the start of the animation */
+    0%   { -webkit-transform: rotate(-30deg); }
+    /*  Rotate a leaf by 50 degrees in 2D space at the end of the animation */
+    100% { -webkit-transform: rotate(30deg); }
+}
+
+
+/* Flips a leaf and rotates it from 50 to -50 degrees in 2D space */
+@-webkit-keyframes counterclockwiseSpinAndFlip 
+{
+    /* Flip a leaf and rotate it by 50 degrees in 2D space at the start of the animation */
+    0%   { -webkit-transform: scale(-1, 1) rotate(30deg); }
+    /* Flip a leaf and rotate it by -50 degrees in 2D space at the end of the animation */
+    100% { -webkit-transform: scale(-1, 1) rotate(-30deg); }
+}

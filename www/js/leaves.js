@@ -1,18 +1,36 @@
 
 /* Define the number of leaves to be used in the animation */
-const NUMBER_OF_LEAVES = 7;
+const NUMBER_OF_LEAVES = 5;
 
 /* 
     Called when the "Falling Leaves" page is completely loaded.
 */
 function init()
 {
+	
+	var balloonPosition = [{left:281,top:293},{left:356,top:359},{left:400,top:292},{left:438,top:332},{left:495,top:290}];
+	
     /* Get a reference to the element that will contain the leaves */
     var container = document.getElementById('leafContainer');
     /* Fill the empty container with new leaves */
     for (var i = 0; i < NUMBER_OF_LEAVES; i++) 
     {
-        container.appendChild(createALeaf());
+
+		/* Start by creating a wrapper div, and an empty img element */
+		var leafDiv = document.createElement('div');
+			
+		leafDiv.style.left = balloonPosition[i].left + "px";
+	
+		/* Position the leaf at a random location along the screen */
+		leafDiv.style.top = balloonPosition[i].top + "px";		
+		
+		var image = document.createElement('img');
+    
+		/* Randomly choose a leaf image and assign it to the newly created element */
+		image.src = 'images/balloon' + (i+1) + '.png';
+	   //  image.src = 'images/sparkle.png';
+  
+        container.appendChild(createALeaf(leafDiv, image));
     }
 }
 
@@ -62,38 +80,26 @@ function durationValue(value)
     function determines which of these spin animations should be applied to each leaf.
     
 */
-function createALeaf()
+function createALeaf(leafDiv, image)
 {
-    /* Start by creating a wrapper div, and an empty img element */
-    var leafDiv = document.createElement('div');
-    var image = document.createElement('img');
-    
-    /* Randomly choose a leaf image and assign it to the newly created element */
-  //  image.src = 'images/realLeaf' + randomInteger(1, 5) + '.png';
-    image.src = 'images/balloon'+randomInteger(1,5)+'.png';
-    
-    leafDiv.style.left = "-240px";
-
-    /* Position the leaf at a random location along the screen */
-    leafDiv.style.top = pixelValue(randomInteger(100, 600));
-    
+   
     /* Randomly choose a spin animation */
     var spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpinAndFlip';
     
     /* Set the -webkit-animation-name property with these values */
-    leafDiv.style.webkitAnimationName = 'fade, drop';
+  //  leafDiv.style.webkitAnimationName = 'fade, drop';
     image.style.webkitAnimationName = spinAnimationName;
     
     /* Figure out a random duration for the fade and drop animations */
-    var fadeAndDropDuration = durationValue(randomFloat(10, 51));
+    //var fadeAndDropDuration = durationValue(randomFloat(5, 11));
     
     /* Figure out another random duration for the spin animation */
-    var spinDuration = durationValue(randomFloat(4, 12));
+    var spinDuration = "6s"; //durationValue(randomFloat(6, 10));
     /* Set the -webkit-animation-duration property with these values */
-    leafDiv.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
+    //leafDiv.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
 
-    var leafDelay = durationValue(randomFloat(0, 1));
-    leafDiv.style.webkitAnimationDelay = leafDelay + ', ' + leafDelay;
+    //var leafDelay = durationValue(randomFloat(0, 5));
+    //leafDiv.style.webkitAnimationDelay = leafDelay + ', ' + leafDelay;
 
     image.style.webkitAnimationDuration = spinDuration;
 

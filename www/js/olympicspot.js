@@ -3,21 +3,7 @@ var soundOn=false;
 var timerOn=false;
 var t;
 var currentPage=1;
-var themeId = 0;  //default theme
-
-var languages = [
-
-{lang:1,sports:["Archery","Athletics","Badminton","Basketball","Beach Volleyball","Boxing","Canoeing Slalom","Canoeing Sprint","Cycling BMX","Cycling Mountain Bike","Cycling Road","Cycling Track","Diving","Equestrian","Fencing","Football","Gymnastics Artistic","Gymnastics Rhythmic","Handball","Hockey","Judo","Modern Pentathlon","Rowing","Sailing","Shooting","Swimming","Synchro Swimming","Table Tennis","Taekwondo","Tennis","Trampoline","Triathlon","Volleyball","Water Polo","Weightlifting","Wrestling"]},
-
-{lang:2,sports:["射箭","田径","羽毛球","篮球","沙滩排球","拳击","皮划艇激流回旋","皮划艇冲刺","自行车BMX","山地自行车","公路自行车","场地自行车","跳水","马术","击剑","足球","体操","艺术体操","手球","曲棍球","柔道","现代五项","赛艇","帆船帆板","射击","游泳","花样游泳","乒乓球","跆拳道","网球","蹦床","铁人三项","排球","水球","举重","摔跤"]},
-
-{lang:3,sports:["射箭","田徑","羽毛球","籃球","沙灘排球","拳擊","皮划艇激流迴旋","皮划艇衝刺","自行車BMX","山地自行車","公路自行車","場地自行車","跳水","馬術","擊劍","足球","體操","藝術體操","手球","曲棍球","柔道","現代五項","賽艇","帆船帆板","射擊","游泳","花樣游泳","乒乓球","跆拳道","網球","蹦床","鐵人三項","排球","水球","舉重","摔跤"]},
-
-{lang:4,sports:["Jousiammunta","Yleisurheilu","Sulkapallo","Koripallo","Rantalentopallo","Nyrkkeily","Koskimelonta","Ratamelonta","Radsport–BMX","Maastopyöräily","Maantiepyöräily","Ratapyöräily","Uimahypyt","Ratsastus","Miekkailu","Jalkapallo","Telinevoimistelu","Rytminen voimistelu","Käsipallo","Maahockey","Judo","Nykyaikainen viisiottelu","Soutu","Purjehdus","Ammunta","Uinti","Taitouinti","Pöytätennis","Taekwondo","Tennis","Trampoliini","Triathlon","Lentopallo","Vesipallo","Painonnosto","Paini"]},
-                 
-{lang:5,sports:["Bogenschießen","Leichtathletik","Badminton","Basketball","Beachvolleyball","Boxen","Kanuslalom","Kanurennsport","BMX","Mountainbike","Straßenrennen","Bahnradrennen","Kunst- und Turmspringen","Military","Fechten","Fußball","Kunstturnen","Rhythmische Sportgymnastik","handball","Hockey","Judo","Moderner Fünfkampf","Rudern","Segeln","Schießen","Schwimmen","Synchronschwimmen","Tischtennis","Taekwondo","Tennis","Trampolin","Triathlon","Volleyball","Wasserball","Gewichtheben","Ringen"]}
-
-];
+var defaultLang="english";
 
 var game = {
 
@@ -164,8 +150,13 @@ newLevel: function() {
 	var level = this.currentLevel;
 	
 	var str = level;
-	var levelName = $(".levelGrid div:nth-child("+game.currentLevel+") p").html();
+	//$("#gameLevelTitle").append('<div id="gameTitle"><p>'+str+'</p></div>');
+	//$("#gameTitle").html('<p>'+str+'</p>');	
+//	$("#gameTitle").html('<p>'+$(".levelGrid div:nth-child("+level+") p").html()+'</p>');	
+	//$("#gameTitle").html('<p>'+getGameLocalName(level)+'</p>');	
+	var levelName = getGameLocalName(this.currentLevel); //$(".levelGrid div:nth-child("+game.currentLevel+") p").html();		
 	$("#gameTitle").html('<p>'+levelName+'</p>');	
+//	$(".levelGrid div:nth-child("+level+") p").html();
 	
 	$("#img1").attr("src", this.newlevels[level].img);
 	$("#img2").attr("src", this.newlevels[level].img);	
@@ -179,11 +170,11 @@ newLevel: function() {
 	
 	for(var i=0;i<faultsSet.length;i++){
 		var index = faultsSet[i];
-		var x=Math.round(this.newlevels[level].faults[index].x*co);
-		var y=Math.round(this.newlevels[level].faults[index].y*co);
-		var w=Math.round(this.newlevels[level].faults[index].w*co);
-		var h=Math.round(this.newlevels[level].faults[index].h*co);
-		//console.log("x:"+x+" y:"+y+" w:"+w+" h"+h);
+		var x=this.newlevels[level].faults[index].x;
+		var y=this.newlevels[level].faults[index].y;
+		var w=this.newlevels[level].faults[index].w;
+		var h=this.newlevels[level].faults[index].h;
+		
 		// attach faults images to original image	 background-image:url(../images/soundOn.png);
 		//var faultDiv = "<div class='faultImage' onclick='spotclicked("+x+","+y+","+w+","+h+")"+"' style='width:"+w+"px; height:"+h+"px; left:"+x+"px; top:"+y+"px; background-image:url(images\/510x510\/"+level+"_"+(index+1)+".jpg);'></div>";
 		var faultDiv = "<div class='faultImage' onclick='spotclicked("+x+","+y+","+w+","+h+")"+"' style='width:"+w+"px; height:"+h+"px; left:"+x+"px; top:"+y+"px; background-image:url("+this.newlevels[level].img.replace(".png","_"+(index+1))+".png);'></div>";
@@ -309,7 +300,7 @@ function goLevelPage(fromPage) {
 	    game.cleanLevel();        
 		$("#gamePage").css('visibility', 'hidden');		
         
-        window.location = "myapp://gamepage/false";
+    //    window.location = "myapp://gamepage/false";	
     }
 	
 	$("#levelPage").css('visibility', 'visible');		
@@ -325,16 +316,10 @@ function golevel(level) {
 	currentPage=3;
 	$("#gamePage").css('visibility', 'visible');
 	$("#levelPage").css('visibility', 'hidden');
-	
-	if((themeId === 0) || (themeId === 1)){
-		$("#gamePage").css("background-size","100% 100%");
-	} else {
-		$("#gamePage").css("background-size","");
-	}	
 		
 	game.init(level);
     
-    window.location = "myapp://gamepage/true";  
+  //  window.location = "myapp://gamepage/true";  
 }
 
 function muteSound() {
@@ -347,31 +332,7 @@ function muteSound() {
 		document.getElementById('bgMusic').pause();
 	}
 }
-
-function changeTheme(){
-	if(++themeId===10){themeId=0;};	
-	$("#gamePage").css("background-image","url(images/theme"+themeId+".png)");
-	if((themeId === 0) || (themeId === 1)){
-		$("#gamePage").css("background-size","100% 100%");
-	} else {
-		$("#gamePage").css("background-size","");
-	}
-}
-/*
-function showad(){
-    $("#ad1").removeClass("showAd");    
-    window.location = "adrequest://adrequest";
-}
-
-function adStatus(avail){
-    console.log("adStatus called"+avail);
-    if(avail)
-        $("#ad1").addClass("showAd");
-    else
-        $("#ad1").removeClass("showAd");
-    
-}*/
-
+		
 function doTimer() {
    if (timerOn) {
 		game.elapsedTime++;
@@ -390,88 +351,85 @@ function doTimer() {
 		setTimeout("doTimer()", 1000);  
 	}
 }	
-			   
-function initLanguage(lang) {
-    console.log("initLanguage called");
-	for(var i=1;i<37;i++){
-		$(".levelGrid div:nth-child("+i+") p").html(languages[lang].sports[i-1]);
-	}
+
+function getGameLocalName(level)
+{
+	if (defaultLang == "chinese"){
+		return $(".chineseGrid div:nth-child("+level+") p").html();		
+	}else if (defaultLang == "traditional"){
+		return $(".traditionalGrid div:nth-child("+level+") p").html();		
+	}else {
+		return $(".englishGrid div:nth-child("+level+") p").html();		
+	}	
+}
+
+
+function changeLanguage(defaultLang) {
+
+	if (defaultLang == "chinese"){
+		$(".englishGrid").css("display","none");		
+		$(".chineseGrid").css("display","block");		
+		$(".traditionalGrid").css("display","none");						
+//		$(".levelGrid div:nth-child(3) p").html(sportsName.chinese[0]);
+	}else if (defaultLang == "traditional"){
+		$(".englishGrid").css("display","none");		
+		$(".chineseGrid").css("display","none");		
+		$(".traditionalGrid").css("display","block");								
+//		$(".levelGrid div:nth-child(5) p").html(sportsName.english[0]);		
+	}else {
+		$(".englishGrid").css("display","block");		
+		$(".chineseGrid").css("display","none");		
+		$(".traditionalGrid").css("display","none");								
+	}	
 }
 
 $(function(){
-
-  $("#img1").click(function (e) { if (soundOn) { playSound(2); } });
-  $("#img2").click(function (e) { if (soundOn) { playSound(2); } });  
-  console.log("starting1...");
-  
-  $("#homePage").click(function (e) {
-      var target = $(e.target);
-      if (target.is("#infobtn")) {
-      /*   if (typeof(lang) !== 'undefined'){
-              if (lang.indexOf("Hans") >= 0){
-                  $("#chineseinfo").addClass("active");
-              }else if (lang.indexOf("Hant") >= 0){
-                  $("#traditionalinfo").addClass("active");
-              }else if (lang.indexOf("fi") >= 0){
-                  $("#suomiinfo").addClass("active");
-              }else {
-                  $("#englishinfo").addClass("active");
-              }
-          }else{
-              $("#englishinfo").addClass("active");
-          }*/
-          $("#info").show("slow");
-       
-        }else if (target.is("#backbtn") || ((target.parents("#info").length ==0 ) && (!target.is("#info")) ) ) {
-            $("#info").hide("slow");
-        }
+	
+    $("#homePage").click(function (e) {
+		var target = $(e.target);
+		if (target.is("#infobtn")) {
+		    $("#info").show("slow");
+		} else if (target.is("#backbtn") || ((target.parents("#info").length ==0 ) && (!target.is("#info")) ) ) {
+			$("#info").hide("slow");
+			changeLanguage(defaultLang);
+		}
     });
-/*
-    if (typeof(lang) !== 'undefined'){
-        if (lang.indexOf("Hans") >= 0){
-            $("#chineseinfo").addClass("active");
-        }else if (lang.indexOf("Hant") >= 0){
-            $("#traditionalinfo").addClass("active");
-        }else if (lang.indexOf("fi") >= 0){
-            $("#suomiinfo").addClass("active");
-        }else {
-            $("#englishinfo").addClass("active");
-        }
-    }else{
-        $("#englishinfo").addClass("active");
-    }
   
-  
+  $("#img1").click(function (e) {
+                   if (soundOn) {
+                   //document.getElementById('wrongSound').play();
+                   playSound(2);
+                   }
+                       });
+  $("#img2").click(function (e) {
+                   if (soundOn) {
+                   //document.getElementById('wrongSound').play();
+                   playSound(2);
+                   }
+                   });  
 
-	if (typeof(lang) !== 'undefined'){
-       console.log("lang is" + lang);
-	   if (lang.indexOf("Hans") >= 0){
-		  initLanguage(1);
-		  $("#chineseinfo").addClass("active");
-	   }else if (lang.indexOf("Hant") >= 0){
-		  initLanguage(2); 
-		  $("#traditionalinfo").addClass("active");
-	   }else if (lang.indexOf("fi") >= 0){
-		  initLanguage(3); 
-		  $("#suomiinfo").addClass("active");
-	   }else {
-		  initLanguage(0); 
-		  $("#englishinfo").addClass("active");
-	   }
-	}else{
-       console.log("lang undefined");
-	   initLanguage(0);
-	   $("#englishinfo").addClass("active");
-	}
+	$("#languages span").click(function (e) {
+		var target = $(e.target);
+		if (target.hasClass("active")) return;
+		$("#languages span.active").removeClass("active");
+		target.addClass("active");
 
-  $("#homePage").click(function (e) {
-         var target = $(e.target);
-         if (target.is("#infobtn")) {
-            $("#info").show("slow");
-         }else if (target.is("#backbtn") || ((target.parents("#info").length ==0 ) && (!target.is("#info")) ) ) {
-                $("#info").hide("slow");
-         }
-   });*/
+		$("#infoList ul.active").removeClass("active").fadeOut("slow");		
+		if (target.is("#chinese")){
+			$("#chineseinfo").addClass("active").fadeIn("slow");
+			defaultLang="chinese";
+		}else if (target.is("#english")){
+			$("#englishinfo").addClass("active").fadeIn("slow");			
+			defaultLang="english";			
+		}else if (target.is("#traditional")){
+			defaultLang="traditional";			
+			$("#traditionalinfo").addClass("active").fadeIn("slow");			
+		}else if (target.is("#suomi")){
+			defaultLang="suomi";			
+			$("#suomiinfo").addClass("active").fadeIn("slow");			
+		}				
+	});
+
 
 	$(".levelGrid").click(function (e) {
 		var target = $(e.target);
@@ -483,14 +441,19 @@ $(function(){
 		}					
 	});
   
-  /*
-    for (var i = 1; i < 11; i++) 
+  
+    for (var i = 1; i < 6; i++) 
     {
         $("#leafContainer div:nth-child("+i+") img").css("webkitAnimationName",  (Math.random() < 0.5) ? "clockwiseSpin" : "counterclockwiseSpinAndFlip");
         $("#leafContainer div:nth-child("+i+") img").css("webkitAnimationDuration", "6s");  
-		
-        $("#leafContainer div:nth-child("+i+")").css("webkitAnimationName","drop");
-        $("#leafContainer div:nth-child("+i+")").css("webkitAnimationDuration", "20s");		
     }
-  */
+  
+  
+/*
+  $("#infobtn").mousedown(function () {
+              $("#info").show("slow");
+              });
+  $("#backbtn").mousedown(function () {
+                   $("#info").hide("slow");
+                   });*/ 
 });

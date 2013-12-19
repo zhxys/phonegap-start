@@ -2,10 +2,13 @@
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
+body {width:1024px;}
+#mainContent, #homePage, #levelPage, #gamePage {
+	width:1024px; height:768px;
+}
 body {
 	text-align: center;
 	margin: 0 auto;
-	width:1024px;
 }
 
 a img{
@@ -17,7 +20,6 @@ p {
 }
 
 #mainContent{
-width:1024px;height:768px;
 -webkit-user-select:none;
 -moz-user-select: none;
 -o-user-select: none;
@@ -27,8 +29,6 @@ user-select: none;
 #homePage {
 	position:absolute;
 	top: 0px;
-	width: 1024px;
-	height: 768px;
 	background-image:  url(../images/homebg.jpg);
 	background-size:100% 100%;		
 	visibility:visible;	
@@ -102,8 +102,6 @@ div #homePage .control {
 #levelPage {
 	position: absolute;
 	top: 0px;
-	width: 1024px;
-	height: 768px;
 	background-image:  url(../images/levelbg.jpg);
 	visibility:hidden;	
 }
@@ -127,12 +125,10 @@ div #homePage .control {
 	background-repeat:no-repeat;
 	background-position:50% 10%;
 	background-color:#80c6f0;
-	border-top:thin solid yellow;
-	border-left:thin solid yellow;	
+	border:thin solid yellow;
+	margin-left:-1px;
+	margin-bottom:-1px;
 }
-
-.r1c6,.r2c6,.r3c6,.r4c6,.r5c6,.r6c6 {border-right:thin solid yellow;}
-.r6c1,.r6c2,.r6c3,.r6c4,.r6c5,.r6c6 {border-bottom:thin solid yellow;}
 
 
 #levelPage .level p {
@@ -181,14 +177,9 @@ font-family:Arial, Helvetica, sans-serif;
 #levelPage .r6c6 {background-image:url(../images/sportsicon/Wrestling.png); }
 
 
-
-
-
 #gamePage {
 	position: absolute;
 	top: 0px;
-	width: 1024px;
-	height: 768px;
 	background-image:  url(../images/gamebg.jpg);
 	background-size:100% 100%;
 	visibility:hidden;	

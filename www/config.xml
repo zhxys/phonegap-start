@@ -6,7 +6,7 @@
         id        = "com.vauvasoft.song"
         version   = "1.0.0">
 
-    <name>Spot difference</name>
+    <name>Spot differences</name>
 
     <description>
         An amazing app by Song: sample application that responds to the deviceready event.
